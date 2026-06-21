@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main() {
+    int num, has_even = 0, first_even, has_odd = 0, first_odd;
+
+    printf("Enter numbers separated by spaces (Enter -1 to stop):\n");
+
+    // Loop continues reading numbers until the user types -1
+    while (scanf("%d", &num) == 1 && num != -1) {
+        // Check for first even number
+        if (num % 2 == 0 && !has_even) {
+            first_even = num;
+            has_even = 1; // Mark as found so it doesn't overwrite
+        }
+        // Check for first odd number
+        if (num % 2 != 0 && !has_odd) {
+            first_odd = num;
+            has_odd = 1;  // Mark as found so it doesn't overwrite
+        }
+    }
+
+    // Print results with safety checks
+    if (has_even) printf("First Even: %d\n", first_even);
+    else printf("First Even: None found\n");
+
+    if (has_odd) printf("First Odd: %d\n", first_odd);
+    else printf("First Odd: None found\n");
+
+    return 0;
+}
